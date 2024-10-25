@@ -135,7 +135,7 @@
     "src": "assets/ticket.svg"
   },
   "node_modules/vike/dist/esm/client/client-routing-runtime/entry.js": {
-    "file": "assets/entries/entry-client-routing.tH7AmcYl.js",
+    "file": "assets/entries/entry-client-routing.szTceuiG.js",
     "name": "entries/entry-client-routing",
     "src": "node_modules/vike/dist/esm/client/client-routing-runtime/entry.js",
     "isEntry": true,
@@ -163,7 +163,7 @@
     ]
   },
   "virtual:vike:pageConfigValuesAll:client:/pages/index": {
-    "file": "assets/entries/pages_index.D-Zyc2KR.js",
+    "file": "assets/entries/pages_index.C670lRjY.js",
     "name": "entries/pages/index",
     "src": "virtual:vike:pageConfigValuesAll:client:/pages/index",
     "isEntry": true,

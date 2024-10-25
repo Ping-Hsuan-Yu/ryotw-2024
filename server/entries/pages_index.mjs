@@ -13,10 +13,10 @@ import DatePicker from "react-date-picker";
 /* empty css                       */
 /* empty css                       */
 /* empty css                       */
-const MainBg = "/assets/static/noise.CxMmyROH.webp";
-const RyoLogo = "/assets/static/ryo-logo.DbcL111j.svg";
-const MiseensceneLogo = "/assets/static/miseenscene-logo.HSeZQV8V.svg";
-const IlliyoonLogo = "/assets/static/illiyoon-logo.zB1gxmr_.svg";
+const MainBg = "/ryotw-2024/assets/static/noise.CxMmyROH.webp";
+const RyoLogo = "/ryotw-2024/assets/static/ryo-logo.DbcL111j.svg";
+const MiseensceneLogo = "/ryotw-2024/assets/static/miseenscene-logo.HSeZQV8V.svg";
+const IlliyoonLogo = "/ryotw-2024/assets/static/illiyoon-logo.zB1gxmr_.svg";
 const Link = styled.ul`
   a {
     letter-spacing: 0.18em;
@@ -139,9 +139,9 @@ function Navigation() {
     }
   );
 }
-const KvRyo = "/assets/static/Ryo_KV.Y4lztQq5.webp";
-const KvMiseenscene = "/assets/static/miseenscene_KV.BUw-zbEG.webp";
-const KvIlliyoon = "/assets/static/illiyoon_KV.V1GQ4UVi.webp";
+const KvRyo = "/ryotw-2024/assets/static/Ryo_KV.Y4lztQq5.webp";
+const KvMiseenscene = "/ryotw-2024/assets/static/miseenscene_KV.BUw-zbEG.webp";
+const KvIlliyoon = "/ryotw-2024/assets/static/illiyoon_KV.V1GQ4UVi.webp";
 function Kv() {
   return /* @__PURE__ */ jsx("section", { children: /* @__PURE__ */ jsxs(Swiper, { modules: [Navigation$1, Autoplay, Pagination], pagination: true, navigation: true, autoplay: { delay: 2500, disableOnInteraction: false }, loop: true, children: [
     /* @__PURE__ */ jsx(SwiperSlide, { children: /* @__PURE__ */ jsx("img", { src: KvRyo, alt: "" }) }),
@@ -149,15 +149,15 @@ function Kv() {
     /* @__PURE__ */ jsx(SwiperSlide, { children: /* @__PURE__ */ jsx("img", { src: KvIlliyoon, alt: "" }) })
   ] }) });
 }
-const TicketBg = "/assets/static/ticket.D7kOfn4O.svg";
-const WatsonsLogo = "/assets/static/watsons_logo.BF2oxGkG.svg";
-const CosmedLogo = "/assets/static/cosmed_logo.DYKZ-D_2.svg";
-const MomoLogo = "/assets/static/momo-logo.C2bFkriF.webp";
-const CarrefourLogo = "/assets/static/carrefour_logo.DY9UFzEF.svg";
-const AmartLogo = "/assets/static/amart_logo.dh5XI1yf.svg";
-const ShopeeLogo = "/assets/static/shopee_logo.BXxpZDk7.svg";
-const TomodsLogo = "/assets/static/Tomods-logo.0rHWNtip.webp";
-const MatsukiyoLogo = "/assets/static/matsukiyo-logo.BhNKZxMl.svg";
+const TicketBg = "/ryotw-2024/assets/static/ticket.D7kOfn4O.svg";
+const WatsonsLogo = "/ryotw-2024/assets/static/watsons_logo.BF2oxGkG.svg";
+const CosmedLogo = "/ryotw-2024/assets/static/cosmed_logo.DYKZ-D_2.svg";
+const MomoLogo = "/ryotw-2024/assets/static/momo-logo.C2bFkriF.webp";
+const CarrefourLogo = "/ryotw-2024/assets/static/carrefour_logo.DY9UFzEF.svg";
+const AmartLogo = "/ryotw-2024/assets/static/amart_logo.dh5XI1yf.svg";
+const ShopeeLogo = "/ryotw-2024/assets/static/shopee_logo.BXxpZDk7.svg";
+const TomodsLogo = "/ryotw-2024/assets/static/Tomods-logo.0rHWNtip.webp";
+const MatsukiyoLogo = "/ryotw-2024/assets/static/matsukiyo-logo.BhNKZxMl.svg";
 const Ticket = styled.section`
   background-image: url(${TicketBg});
   background-repeat: no-repeat;
@@ -200,7 +200,7 @@ function Coupon() {
     ] })
   ] });
 }
-const WindowBg = "/assets/static/window.BuPhDfdg.webp";
+const WindowBg = "/ryotw-2024/assets/static/window.BuPhDfdg.webp";
 const Dot$1 = "data:image/webp;base64,UklGRpAAAABXRUJQVlA4WAoAAAAQAAAACgAACQAAQUxQSFAAAAABcFtt24s9R61TmcAIOkdpCcOodIZQ06pyZoM8gaPKf5TNEBETAEBwfoPBEwCprpcJRefrraKv90334LM+fLcPMu2ByL6v/jLA+ePamxIDAFZQOCAaAAAAMAEAnQEqCwAKAAAAACWkAANwAP7/3tzwAAA=";
 const Window = styled.div`
   background-image: url(${WindowBg});
@@ -263,10 +263,10 @@ function Announcement() {
     ] }) })
   ] }) }) });
 }
-const GreenGrid = "/assets/static/register-bg.DTOTkUiX.webp";
+const GreenGrid = "/ryotw-2024/assets/static/register-bg.DTOTkUiX.webp";
 const Dot = "data:image/webp;base64,UklGRqoAAABXRUJQVlA4WAoAAAAQAAAACgAACQAAQUxQSFAAAAABcFtt24s9R61TmcAIOkdpCcOodIZQ06pyZoM8gaPKf5TNEBETAEBwfoPBEwCprpcJRefrraKv90334LM+fLcPMu2ByL6v/jLA+ePamxIDAFZQOCA0AAAAcAEAnQEqCwAKAAAAACWgAnQCIoAA/v8VD3/2u1//2u1//2u1p//2Mt+rn9zfyzOFASbgAA==";
-const LinkBg = "/assets/static/link.Q4TMASXV.webp";
-const SubmitButton = "/assets/static/button.BXqQbIM1.webp";
+const LinkBg = "/ryotw-2024/assets/static/link.Q4TMASXV.webp";
+const SubmitButton = "/ryotw-2024/assets/static/button.BXqQbIM1.webp";
 const GridBg = styled.div`
   background-image: url(${GreenGrid});
 `;
@@ -568,9 +568,9 @@ const detail = [
     ]
   }
 ];
-const CloudBg = "/assets/static/announcement-bg.BxIYLYGS.svg";
-const Airplane = "/assets/static/airplane.DkA5Rut-.webp";
-const Seoul = "/assets/static/seoul.Ci6akxgZ.webp";
+const CloudBg = "/ryotw-2024/assets/static/announcement-bg.BxIYLYGS.svg";
+const Airplane = "/ryotw-2024/assets/static/airplane.DkA5Rut-.webp";
+const Seoul = "/ryotw-2024/assets/static/seoul.Ci6akxgZ.webp";
 const Cloud = styled.div`
   background-image: url(${CloudBg});
   background-position: center;
