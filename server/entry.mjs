@@ -31,30 +31,6 @@ const pageConfigsSerialized = [
     }
   },
   {
-    pageId: "/pages/form",
-    isErrorPage: void 0,
-    routeFilesystem: { "routeString": "/form", "definedBy": "/pages/form/" },
-    loadConfigValuesAll: () => import("./entries/pages_form.mjs"),
-    configValuesSerialized: {
-      ["isClientRuntimeLoaded"]: {
-        type: "computed",
-        definedAtData: null,
-        valueSerialized: {
-          type: "js-serialized",
-          value: true
-        }
-      },
-      ["clientRouting"]: {
-        type: "standard",
-        definedAtData: { "filePathToShowToUser": "vike-react/config", "fileExportPathToShowToUser": ["default", "clientRouting"] },
-        valueSerialized: {
-          type: "js-serialized",
-          value: true
-        }
-      }
-    }
-  },
-  {
     pageId: "/pages/index",
     isErrorPage: void 0,
     routeFilesystem: { "routeString": "/", "definedBy": "/pages/index/" },
@@ -113,62 +89,47 @@ const pageFiles = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
 }, Symbol.toStringTag, { value: "Module" }));
 {
   const assetsManifest = {
+  "_chunk-!~{004}~.js": {
+    "file": "assets/static/styles_Calendar-2d27b897.sNeX-9iT.css",
+    "src": "_chunk-!~{004}~.js"
+  },
   "_chunk-!~{005}~.js": {
-    "file": "assets/static/react-calendar-a5efe142.BybxcT28.css",
+    "file": "assets/static/styles_DatePicker-214c85bd.CizWUeoi.css",
     "src": "_chunk-!~{005}~.js"
   },
   "_chunk-!~{006}~.js": {
-    "file": "assets/static/react-date-picker-02fa40f2.C_REsZUr.css",
+    "file": "assets/static/styles_tailwind-d7b83922.GwYVwlvY.css",
     "src": "_chunk-!~{006}~.js"
   },
   "_chunk-!~{007}~.js": {
-    "file": "assets/static/styles_Calendar-2d27b897.sNeX-9iT.css",
+    "file": "assets/static/swiper-2a04c68e.EKmKsbKj.css",
     "src": "_chunk-!~{007}~.js"
   },
   "_chunk-!~{008}~.js": {
-    "file": "assets/static/styles_DatePicker-214c85bd.CizWUeoi.css",
+    "file": "assets/static/swiper-e0068eea.BoW6ihGT.css",
     "src": "_chunk-!~{008}~.js"
   },
   "_chunk-!~{009}~.js": {
-    "file": "assets/static/styles_tailwind-d7b83922.BJ-KOjwd.css",
+    "file": "assets/static/swiper-facb96ae.aOjAu50E.css",
     "src": "_chunk-!~{009}~.js"
   },
   "_chunk-!~{00a}~.js": {
-    "file": "assets/static/swiper-2a04c68e.EKmKsbKj.css",
-    "src": "_chunk-!~{00a}~.js"
-  },
-  "_chunk-!~{00b}~.js": {
-    "file": "assets/static/swiper-e0068eea.BoW6ihGT.css",
-    "src": "_chunk-!~{00b}~.js"
-  },
-  "_chunk-!~{00c}~.js": {
-    "file": "assets/static/swiper-facb96ae.aOjAu50E.css",
-    "src": "_chunk-!~{00c}~.js"
-  },
-  "_chunk-!~{00d}~.js": {
     "file": "assets/static/vike-react-b64a028b.B6DZbHFi.css",
-    "src": "_chunk-!~{00d}~.js"
+    "src": "_chunk-!~{00a}~.js"
   },
   "_chunk-BcbBGIHA.js": {
     "file": "assets/chunks/chunk-BcbBGIHA.js",
     "name": "executeHook"
   },
-  "_chunk-BuVJuEe3.js": {
-    "file": "assets/chunks/chunk-BuVJuEe3.js",
+  "_chunk-C893zDcs.js": {
+    "file": "assets/chunks/chunk-C893zDcs.js",
     "name": "_onPageTransitionStart",
     "imports": [
       "_chunk-BcbBGIHA.js"
     ],
     "css": [
       "assets/static/vike-react-b64a028b.B6DZbHFi.css",
-      "assets/static/styles_tailwind-d7b83922.BJ-KOjwd.css"
-    ]
-  },
-  "_chunk-D_7V7NYk.js": {
-    "file": "assets/chunks/chunk-D_7V7NYk.js",
-    "name": "DatePicker",
-    "imports": [
-      "_chunk-BuVJuEe3.js"
+      "assets/static/styles_tailwind-d7b83922.GwYVwlvY.css"
     ]
   },
   "assets/announcement/airplane.webp": {
@@ -264,7 +225,7 @@ const pageFiles = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
     "src": "assets/ticket.svg"
   },
   "node_modules/vike/dist/esm/client/client-routing-runtime/entry.js": {
-    "file": "assets/entries/entry-client-routing.DzqS4eQz.js",
+    "file": "assets/entries/entry-client-routing.tH7AmcYl.js",
     "name": "entries/entry-client-routing",
     "src": "node_modules/vike/dist/esm/client/client-routing-runtime/entry.js",
     "isEntry": true,
@@ -273,52 +234,32 @@ const pageFiles = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
     ],
     "dynamicImports": [
       "virtual:vike:pageConfigValuesAll:client:/pages/_error",
-      "virtual:vike:pageConfigValuesAll:client:/pages/form",
       "virtual:vike:pageConfigValuesAll:client:/pages/index"
     ]
   },
   "virtual:vike:pageConfigValuesAll:client:/pages/_error": {
-    "file": "assets/entries/pages_error.Q5RZuIDl.js",
+    "file": "assets/entries/pages_error.DOCoMmRi.js",
     "name": "entries/pages/_error",
     "src": "virtual:vike:pageConfigValuesAll:client:/pages/_error",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_chunk-BuVJuEe3.js",
+      "_chunk-C893zDcs.js",
       "_chunk-BcbBGIHA.js"
     ],
     "css": [
       "assets/static/vike-react-b64a028b.B6DZbHFi.css",
-      "assets/static/styles_tailwind-d7b83922.BJ-KOjwd.css"
-    ]
-  },
-  "virtual:vike:pageConfigValuesAll:client:/pages/form": {
-    "file": "assets/entries/pages_form.73QijErS.js",
-    "name": "entries/pages/form",
-    "src": "virtual:vike:pageConfigValuesAll:client:/pages/form",
-    "isEntry": true,
-    "isDynamicEntry": true,
-    "imports": [
-      "_chunk-BuVJuEe3.js",
-      "_chunk-D_7V7NYk.js",
-      "_chunk-BcbBGIHA.js"
-    ],
-    "css": [
-      "assets/static/react-date-picker-02fa40f2.C_REsZUr.css",
-      "assets/static/react-calendar-a5efe142.BybxcT28.css",
-      "assets/static/vike-react-b64a028b.B6DZbHFi.css",
-      "assets/static/styles_tailwind-d7b83922.BJ-KOjwd.css"
+      "assets/static/styles_tailwind-d7b83922.GwYVwlvY.css"
     ]
   },
   "virtual:vike:pageConfigValuesAll:client:/pages/index": {
-    "file": "assets/entries/pages_index.Dc3kBFM8.js",
+    "file": "assets/entries/pages_index.D-Zyc2KR.js",
     "name": "entries/pages/index",
     "src": "virtual:vike:pageConfigValuesAll:client:/pages/index",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_chunk-BuVJuEe3.js",
-      "_chunk-D_7V7NYk.js",
+      "_chunk-C893zDcs.js",
       "_chunk-BcbBGIHA.js"
     ],
     "css": [
@@ -328,7 +269,7 @@ const pageFiles = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
       "assets/static/styles_Calendar-2d27b897.sNeX-9iT.css",
       "assets/static/styles_DatePicker-214c85bd.CizWUeoi.css",
       "assets/static/vike-react-b64a028b.B6DZbHFi.css",
-      "assets/static/styles_tailwind-d7b83922.BJ-KOjwd.css"
+      "assets/static/styles_tailwind-d7b83922.GwYVwlvY.css"
     ],
     "assets": [
       "assets/static/noise.CxMmyROH.webp",
