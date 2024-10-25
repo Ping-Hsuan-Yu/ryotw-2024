@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#root {
+  display: flex;
+  justify-content: center;
+}
+
+.underline-yellow {
+  @apply underline decoration-8 decoration-[#ffef5e];
+}
+
+.swiper {
+  --swiper-navigation-color: rgba(255, 255, 255, 0.5);
+  --swiper-pagination-color: #fff;
+  --swiper-pagination-bullet-inactive-color: #fff;
+}
+
+.label {
+  @apply text-primary-600 text-[28px] font-medium tracking-[0.09em];
+}
+
+.input {
+  @apply bg-primary-300 text-primary-600 text-[26px] font-medium tracking-[0.13em] w-[522px] outline-primary-500 px-3 placeholder:text-primary-400;
+}
+
+.label-input-field {
+  @apply flex justify-between gap-7;
+}

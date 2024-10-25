@@ -10,8 +10,8 @@ export default {
   Layout,
 
   // https://vike.dev/head-tags
-  title: "My Vike App",
-  description: "Demo showcasing Vike",
+  title: "登錄發票就抽韓國首爾雙人機票",
+  description: "登錄發票就抽韓國首爾雙人機票",
 
   extends: vikeReact,
 } satisfies Config;

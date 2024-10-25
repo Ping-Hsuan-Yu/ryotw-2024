@@ -1,17 +1,33 @@
-import React from "react";
-import { Counter } from "./Counter.js";
+import { styled } from "styled-components";
+
+import MainBg from "../../assets/noise.webp";
+import Navigation from "./Navigation";
+import Kv from "./Kv";
+import Coupon from "./Coupon";
+import Announcement from "./Announcement";
+import Register from "./Register";
+import AnnouncementDetail from "./AnnouncementDetail";
+
+const Main = styled.main`
+  background-image: url(${MainBg});
+`;
+
+const Limit = styled.div`
+  width: 100vw;
+  max-width: 1280px;
+`;
 
 export default function Page() {
   return (
-    <>
-      <h1 className="font-bold text-3xl pb-4">My Vike app</h1>
-      This page is:
-      <ul>
-        <li>Rendered to HTML.</li>
-        <li>
-          Interactive. <Counter />
-        </li>
-      </ul>
-    </>
+    <Limit>
+      <Navigation />
+      <Kv />
+      <Main className="bg-primary-300 pt-24">
+        <Coupon />
+        <Announcement />
+        <AnnouncementDetail />
+        <Register />
+      </Main>
+    </Limit>
   );
 }
