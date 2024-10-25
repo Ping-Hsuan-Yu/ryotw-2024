@@ -225,7 +225,7 @@ const pageFiles = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
     "src": "assets/ticket.svg"
   },
   "node_modules/vike/dist/esm/client/client-routing-runtime/entry.js": {
-    "file": "assets/entries/entry-client-routing.szTceuiG.js",
+    "file": "assets/entries/entry-client-routing.BkdRvDsH.js",
     "name": "entries/entry-client-routing",
     "src": "node_modules/vike/dist/esm/client/client-routing-runtime/entry.js",
     "isEntry": true,
@@ -301,8 +301,8 @@ const pageFiles = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
   const pluginManifest = {
     "version": "0.4.199",
     "usesClientRouter": false,
-    "baseServer": "/ryotw-2024",
-    "baseAssets": "/ryotw-2024",
+    "baseServer": "/ryotw-2024/",
+    "baseAssets": "/ryotw-2024/",
     "includeAssetsImportedByServer": true,
     "redirects": {},
     "trailingSlash": false,
