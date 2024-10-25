@@ -33,7 +33,7 @@
 
 .react-date-picker__inputGroup__year {
   font-size: 26px !important;
-  font-weight: bold !important;
+  font-weight: 500 !important;
   width: 82px !important;
   text-align: end;
 }
@@ -41,7 +41,7 @@
 .react-date-picker__inputGroup__month,
 .react-date-picker__inputGroup__day {
   font-size: 26px !important;
-  font-weight: bold !important;
+  font-weight: 500 !important;
   width: 36px !important;
   text-align: end;
 }

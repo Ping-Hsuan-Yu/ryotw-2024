@@ -72,8 +72,66 @@ export default function Register() {
 
   const handleInputOnchange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
-    setFormData((prev) => ({ ...prev, [id]: value }));
+
+    switch (id) {
+      case "userNumber": {
+        const upperCasedValue = value.toUpperCase();
+        const regex = /^[A-Z]*[0-9]*$/; // 第一碼為英文字母，剩下九碼為數字
+        if (regex.test(upperCasedValue) || upperCasedValue === "") {
+          setFormData((prev) => ({ ...prev, [id]: upperCasedValue }));
+        }
+        break;
+      }
+      case "phone": {
+        const regex = /^[0-9]*$/; // 僅能輸入數字
+        if (regex.test(value) || value === "") {
+          setFormData((prev) => ({ ...prev, [id]: value }));
+        }
+        break;
+      }
+      case "invoiceNum": {
+        const upperCasedValue = value.toUpperCase();
+        const regex = /^[A-Z]*[0-9]*$/; // 前兩碼為英文字母，剩下八碼為數字
+        if (regex.test(upperCasedValue) || upperCasedValue === "") {
+          setFormData((prev) => ({ ...prev, [id]: upperCasedValue }));
+        }
+        break;
+      }
+      case "randomCode": {
+        const regex = /^[0-9]{0,4}$/; // 四碼數字
+        if (regex.test(value)) {
+          setFormData((prev) => ({ ...prev, [id]: value }));
+        }
+        break;
+      }
+      default: {
+        setFormData((prev) => ({ ...prev, [id]: value }));
+        break;
+      }
+    }
   };
+  const apiLink =
+    "https://script.google.com/macros/s/AKfycbyLXsFtRQCTk_UP-jHP9BukR4u8u76KkJZ53qYkueh1pRIJSSu3B-84YXRRcujwdrFS/exec";
+
+  const handleSubmit = async (formData: FormDataType, date: Value) => {
+    const dateString = date !== null ? date.toLocaleString().split(" ")[0] : "";
+    const params = new URLSearchParams({ ...formData, date: dateString });
+    try {
+      const response = await fetch(`${apiLink}?${params}`, { method: "POST" });
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      console.log(data);
+      //TODO: add alert, add loading, add validation
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const regex1 = /^[A-Z][0-9]{9}$/; // 第一碼為英文字母，剩下九碼為數字
+  const regex2 = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // email 格式
+  const regex3 = /^[A-Z]{2}[0-9]{8}$/; // 前兩碼為英文字母，剩下八碼為數字
 
   return (
     <GridBg className="flex flex-col items-center">
@@ -169,7 +227,7 @@ export default function Register() {
               type="text"
               required
               value={formData.invoiceNum}
-              placeholder="AA-12345678"
+              placeholder="AA12345678"
             />
           </div>
           <div className="label-input-field">
@@ -201,9 +259,15 @@ export default function Register() {
               placeholder="0000"
             />
           </div>
-          <button className="flex justify-center">
-            <img width={344} height={80} src={SubmitButton} alt="" />
-          </button>
+          <div className="flex justify-center">
+            <button
+              onClick={() => {
+                handleSubmit(formData, value);
+              }}
+            >
+              <img width={344} height={80} src={SubmitButton} alt="" />
+            </button>
+          </div>
         </div>
       </ClipDiv>
       <p className="text-[21px] text-center text-white font-medium tracking-[0.06em] leading-10 mt-10">
@@ -213,27 +277,33 @@ export default function Register() {
       </p>
       <section id="meta" className="relative my-20">
         <a
-          href=""
+          target="_blank"
+          href="https://www.facebook.com/RyohairTW"
           className="absolute w-[6.5%] h-[10%] top-[62.5%] left-[17.5%]"
         />
         <a
-          href=""
+          target="_blank"
+          href="https://www.instagram.com/ryohairtw"
           className="absolute w-[6.5%] h-[10%] top-[62.5%] left-[25%]"
         />
         <a
-          href=""
+          target="_blank"
+          href="https://www.facebook.com/miseensceneTW"
           className="absolute w-[6.5%] h-[10%] top-[62.5%] left-[41.5%]"
         />
         <a
-          href=""
+          target="_blank"
+          href="https://www.instagram.com/miseenscenetw"
           className="absolute w-[6.5%] h-[10%] top-[62.5%] left-[49%]"
         />
         <a
-          href=""
+          target="_blank"
+          href="https://www.facebook.com/illiyoonTW"
           className="absolute w-[6.5%] h-[10%] top-[62.5%] left-[65.5%]"
         />
         <a
-          href=""
+          target="_blank"
+          href="https://www.instagram.com/illiyoon_tw"
           className="absolute w-[6.5%] h-[10%] top-[62.5%] left-[73%]"
         />
         <img width={1074} height={764} src={LinkBg} />
