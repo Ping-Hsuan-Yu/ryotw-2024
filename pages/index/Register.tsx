@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 import GreenGrid from "../../assets/register/register-bg.webp";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import DatePicker from "react-date-picker";
 import "../../styles/Calendar.css";
 import "../../styles/DatePicker.css";
@@ -10,6 +10,9 @@ import MiseensceneLogo from "../../assets/logo/miseenscene-logo.svg";
 import IlliyoonLogo from "../../assets/logo/illiyoon-logo.svg";
 import LinkBg from "../../assets/link.webp";
 import SubmitButton from "../../assets/register/button.webp";
+import Loading from "../../components/Loading";
+import { useFloating, useTransitionStyles } from "@floating-ui/react";
+import LabeledInputField from "../../components/LabeledInputField";
 
 type ValuePiece = Date | null;
 
@@ -69,6 +72,98 @@ export default function Register() {
     date: "",
     randomCode: "",
   });
+  const [loading, setLoading] = useState<boolean>(false);
+  const [validationMessages, setValidationMessages] = useState({
+    userName: "",
+    userNumber: "",
+    phone: "",
+    email: "",
+    invoiceNum: "",
+    randomCode: "",
+  });
+  const [isOpen, setIsOpen] = useState({
+    userName: false,
+    userNumber: false,
+    phone: false,
+    email: false,
+    invoiceNum: false,
+    randomCode: false,
+  });
+
+  const {
+    refs: userNameRefs,
+    floatingStyles: userNameFloatingStyles,
+    context: userNameContext,
+  } = useFloating({
+    placement: "top-end",
+    open: isOpen.userName,
+    onOpenChange: (open) => setIsOpen((prev) => ({ ...prev, userName: open })),
+  });
+  const { isMounted: userNameIsMounted, styles: userNameStyles } =
+    useTransitionStyles(userNameContext, { duration: 150 });
+
+  const {
+    refs: userNumberRefs,
+    floatingStyles: userNumberFloatingStyles,
+    context: userNumberContext,
+  } = useFloating({
+    placement: "top-end",
+    open: isOpen.userNumber,
+    onOpenChange: (open) =>
+      setIsOpen((prev) => ({ ...prev, userNumber: open })),
+  });
+  const { isMounted: userNumberIsMounted, styles: userNumberStyles } =
+    useTransitionStyles(userNumberContext, { duration: 150 });
+
+  const {
+    refs: phoneRefs,
+    floatingStyles: phoneFloatingStyles,
+    context: phoneContext,
+  } = useFloating({
+    placement: "top-end",
+    open: isOpen.phone,
+    onOpenChange: (open) => setIsOpen((prev) => ({ ...prev, phone: open })),
+  });
+  const { isMounted: phoneIsMounted, styles: phoneStyles } =
+    useTransitionStyles(phoneContext, { duration: 150 });
+
+  const {
+    refs: emailRefs,
+    floatingStyles: emailFloatingStyles,
+    context: emailContext,
+  } = useFloating({
+    placement: "top-end",
+    open: isOpen.email,
+    onOpenChange: (open) => setIsOpen((prev) => ({ ...prev, email: open })),
+  });
+  const { isMounted: emailIsMounted, styles: emailStyles } =
+    useTransitionStyles(emailContext, { duration: 150 });
+
+  const {
+    refs: invoiceNumRefs,
+    floatingStyles: invoiceNumFloatingStyles,
+    context: invoiceNumContext,
+  } = useFloating({
+    placement: "top-end",
+    open: isOpen.invoiceNum,
+    onOpenChange: (open) =>
+      setIsOpen((prev) => ({ ...prev, invoiceNum: open })),
+  });
+  const { isMounted: invoiceNumIsMounted, styles: invoiceNumStyles } =
+    useTransitionStyles(invoiceNumContext, { duration: 150 });
+
+  const {
+    refs: randomCodeRefs,
+    floatingStyles: randomCodeFloatingStyles,
+    context: randomCodeContext,
+  } = useFloating({
+    placement: "top-end",
+    open: isOpen.randomCode,
+    onOpenChange: (open) =>
+      setIsOpen((prev) => ({ ...prev, randomCode: open })),
+  });
+  const { isMounted: randomCodeIsMounted, styles: randomCodeStyles } =
+    useTransitionStyles(randomCodeContext, { duration: 150 });
 
   const handleInputOnchange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
@@ -110,14 +205,15 @@ export default function Register() {
       }
     }
   };
-  const apiLink =
-    "https://script.google.com/macros/s/AKfycbyLXsFtRQCTk_UP-jHP9BukR4u8u76KkJZ53qYkueh1pRIJSSu3B-84YXRRcujwdrFS/exec";
 
   const handleSubmit = async (formData: FormDataType, date: Value) => {
+    setLoading(true);
     const dateString = date !== null ? date.toLocaleString().split(" ")[0] : "";
     const params = new URLSearchParams({ ...formData, date: dateString });
     try {
-      const response = await fetch(`${apiLink}?${params}`, { method: "POST" });
+      const response = await fetch(`${import.meta.env.API}?${params}`, {
+        method: "POST",
+      });
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -126,6 +222,8 @@ export default function Register() {
       //TODO: add alert, add loading, add validation
     } catch (err) {
       console.error(err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -158,83 +256,81 @@ export default function Register() {
           <TitleWithDot>電子發票登錄</TitleWithDot>
         </div>
         <div className="mx-14 mt-7 mb-14 flex flex-col gap-14">
+          <LabeledInputField
+            label="真實姓名"
+            id="userName"
+            onChange={handleInputOnchange}
+            required
+            value={formData.userName}
+            autoComplete="name"
+            setReference={userNameRefs.setReference}
+            isMounted={userNameIsMounted}
+            setFloating={userNameRefs.setFloating}
+            styles={{ ...userNameFloatingStyles, ...userNameStyles }}
+            validationMessages={validationMessages.userName}
+          />
+          <LabeledInputField
+            label="身份證字號"
+            id="userNumber"
+            onChange={handleInputOnchange}
+            required
+            value={formData.userNumber}
+            autoComplete="off"
+            setReference={userNumberRefs.setReference}
+            isMounted={userNumberIsMounted}
+            setFloating={userNumberRefs.setFloating}
+            styles={{ ...userNumberFloatingStyles, ...userNumberStyles }}
+            validationMessages={validationMessages.userNumber}
+          />
+
+          <LabeledInputField
+            label="聯絡電話"
+            id="phone"
+            onChange={handleInputOnchange}
+            required
+            value={formData.phone}
+            autoComplete="phone"
+            inputMode="tel"
+            setReference={phoneRefs.setReference}
+            isMounted={phoneIsMounted}
+            setFloating={phoneRefs.setFloating}
+            styles={{ ...phoneFloatingStyles, ...phoneStyles }}
+            validationMessages={validationMessages.phone}
+          />
+          <LabeledInputField
+            label="email"
+            id="email"
+            onChange={handleInputOnchange}
+            required
+            value={formData.email}
+            autoComplete="email"
+            inputMode="email"
+            setReference={emailRefs.setReference}
+            isMounted={emailIsMounted}
+            setFloating={emailRefs.setFloating}
+            styles={{ ...emailFloatingStyles, ...emailStyles }}
+            validationMessages={validationMessages.email}
+          />
+          <LabeledInputField
+            label="發票號碼"
+            id="invoiceNum"
+            onChange={handleInputOnchange}
+            required
+            value={formData.invoiceNum}
+            placeholder="AA12345678"
+            setReference={invoiceNumRefs.setReference}
+            isMounted={invoiceNumIsMounted}
+            setFloating={invoiceNumRefs.setFloating}
+            styles={{ ...invoiceNumFloatingStyles, ...invoiceNumStyles }}
+            validationMessages={validationMessages.invoiceNum}
+          />
+
           <div className="label-input-field">
-            <label htmlFor="userName" className="label">
-              真實姓名
-            </label>
-            <input
-              onChange={handleInputOnchange}
-              id="userName"
-              className="input"
-              type="text"
-              required
-              value={formData.userName}
-              autoComplete="name"
-            />
-          </div>
-          <div className="label-input-field">
-            <label htmlFor="userNumber" className="label">
-              身份證字號
-            </label>
-            <input
-              onChange={handleInputOnchange}
-              id="userNumber"
-              className="input"
-              type="text"
-              required
-              value={formData.userNumber}
-              autoComplete="off"
-            />
-          </div>
-          <div className="label-input-field">
-            <label htmlFor="phone" className="label">
-              聯絡電話
-            </label>
-            <input
-              onChange={handleInputOnchange}
-              id="phone"
-              className="input"
-              type="text"
-              required
-              value={formData.phone}
-              autoComplete="phone"
-              inputMode="tel"
-            />
-          </div>
-          <div className="label-input-field">
-            <label htmlFor="email" className="label">
-              email
-            </label>
-            <input
-              onChange={handleInputOnchange}
-              id="email"
-              className="input"
-              type="email"
-              required
-              value={formData.email}
-              autoComplete="email"
-              inputMode="email"
-            />
-          </div>
-          <div className="label-input-field">
-            <label htmlFor="" className="label">
-              發票號碼
-            </label>
-            <input
-              onChange={handleInputOnchange}
-              id="invoiceNum"
-              className="input"
-              type="text"
-              required
-              value={formData.invoiceNum}
-              placeholder="AA12345678"
-            />
-          </div>
-          <div className="label-input-field">
-            <label htmlFor="" className="label">
+            <label htmlFor="date" className="label">
               消費日期
             </label>
             <DatePicker
+              id="date"
               className="input"
               onChange={onChange}
               value={value}
@@ -245,27 +341,34 @@ export default function Register() {
               format="yyyy/MM/dd"
             />
           </div>
-          <div className="label-input-field">
-            <label htmlFor="randomCode" className="label">
-              隨機碼
-            </label>
-            <input
-              onChange={handleInputOnchange}
-              id="randomCode"
-              className="input"
-              type="text"
-              value={formData.randomCode}
-              inputMode="numeric"
-              placeholder="0000"
-            />
-          </div>
+          <LabeledInputField
+            label="隨機碼"
+            id="randomCode"
+            onChange={handleInputOnchange}
+            required
+            value={formData.randomCode}
+            inputMode="numeric"
+            placeholder="0000"
+            setReference={randomCodeRefs.setReference}
+            isMounted={randomCodeIsMounted}
+            setFloating={randomCodeRefs.setFloating}
+            styles={{ ...randomCodeFloatingStyles, ...randomCodeStyles }}
+            validationMessages={validationMessages.randomCode}
+          />
+
           <div className="flex justify-center">
             <button
               onClick={() => {
                 handleSubmit(formData, value);
               }}
+              className="w-[344px] h-[80px]"
+              disabled={loading}
             >
-              <img width={344} height={80} src={SubmitButton} alt="" />
+              {loading ? (
+                <Loading />
+              ) : (
+                <img width={344} height={80} src={SubmitButton} alt="" />
+              )}
             </button>
           </div>
         </div>
