@@ -31,24 +31,22 @@
   box-sizing: content-box;
 }
 
-.react-date-picker__inputGroup__year {
-  font-size: 26px !important;
-  font-weight: 500 !important;
-  width: 82px !important;
+.react-date-picker__inputGroup__year,
+.react-date-picker__inputGroup__month,
+.react-date-picker__inputGroup__day {
+  font-size: inherit;
+  font-weight: inherit;
+  width: initial !important;
   text-align: end;
 }
 
-.react-date-picker__inputGroup__month,
-.react-date-picker__inputGroup__day {
-  font-size: 26px !important;
-  font-weight: 500 !important;
-  width: 36px !important;
-  text-align: end;
+.react-date-picker__inputGroup__year {
+  width: 3em !important;
 }
 
 .react-date-picker__inputGroup__divider {
-  font-size: 26px !important;
-  font-weight: bold !important;
+  font-size: inherit;
+  font-weight: inherit;
   padding: 2px;
   white-space: pre;
 }
@@ -56,6 +54,10 @@
 .react-date-picker__inputGroup__divider,
 .react-date-picker__inputGroup__leadingZero {
   display: inline-block;
+}
+
+.react-date-picker__inputGroup__leadingZero {
+  display: none;
 }
 
 .react-date-picker__inputGroup__input {
