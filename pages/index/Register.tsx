@@ -1,5 +1,5 @@
 import { useFloating, useTransitionStyles } from "@floating-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DatePicker from "react-date-picker";
 import { styled } from "styled-components";
 import LinkBg from "../../assets/link.webp";
@@ -16,6 +16,9 @@ import "../../styles/DatePicker.css";
 import Stamp1 from "../../assets/register/stamp-1.webp";
 import Stamp2 from "../../assets/register/stamp-2.webp";
 import Stamp3 from "../../assets/register/stamp-3.webp";
+
+import { ToastContainer, toast, Bounce } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 type ValuePiece = Date | null;
 
@@ -95,6 +98,9 @@ export default function Register() {
     invoiceNum: false,
     randomCode: false,
   });
+
+  const [onSubmit, setOnSubmit] = useState<boolean>(false);
+  const [validate, setValidate] = useState<boolean>(false);
 
   const {
     refs: userNameRefs,
@@ -217,12 +223,32 @@ export default function Register() {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // email 格式
     const invoiceRegex = /^[A-Z]{2}[0-9]{8}$/; // 前兩碼為英文字母，剩下八碼為數字
 
+    if (formData.userName === "") {
+      setValidationMessages((prev) => ({
+        ...prev,
+        userName: "此為必填欄位",
+      }));
+      setIsOpen((prev) => ({ ...prev, userName: true }));
+    } else {
+      setIsOpen((prev) => ({ ...prev, userName: false }));
+    }
     if (!idRegex.test(formData.userNumber)) {
       setValidationMessages((prev) => ({
         ...prev,
         userNumber: "請輸入正確格式身份證字號",
       }));
       setIsOpen((prev) => ({ ...prev, userNumber: true }));
+    } else {
+      setIsOpen((prev) => ({ ...prev, userNumber: false }));
+    }
+    if (formData.phone === "") {
+      setValidationMessages((prev) => ({
+        ...prev,
+        phone: "此為必填欄位",
+      }));
+      setIsOpen((prev) => ({ ...prev, phone: true }));
+    } else {
+      setIsOpen((prev) => ({ ...prev, phone: false }));
     }
     if (!emailRegex.test(formData.email)) {
       setValidationMessages((prev) => ({
@@ -230,6 +256,8 @@ export default function Register() {
         email: "請輸入正確格式email",
       }));
       setIsOpen((prev) => ({ ...prev, email: true }));
+    } else {
+      setIsOpen((prev) => ({ ...prev, email: false }));
     }
     if (!invoiceRegex.test(formData.invoiceNum)) {
       setValidationMessages((prev) => ({
@@ -237,31 +265,72 @@ export default function Register() {
         invoiceNum: "請輸入正確格式發票號碼",
       }));
       setIsOpen((prev) => ({ ...prev, invoiceNum: true }));
+    } else {
+      setIsOpen((prev) => ({ ...prev, invoiceNum: false }));
     }
   };
 
+  useEffect(() => {
+    if (onSubmit) {
+      handleValidation(formData);
+    }
+  }, [formData]);
+
+  useEffect(() => {
+    if (onSubmit) {
+      setValidate(!Object.values(isOpen).includes(true));
+    }
+  }, [isOpen]);
+
   const handleSubmit = async (formData: FormDataType, date: Value) => {
-    handleValidation(formData)
-    setLoading(true);
-    const dateString = date !== null ? date.toLocaleString().split(" ")[0] : "";
-    const params = new URLSearchParams({ ...formData, date: dateString });
-    try {
-      const response = await fetch(
-        `${import.meta.env.PUBLIC_ENV__API}?${params}`,
-        {
-          method: "POST",
+    setOnSubmit(true);
+    handleValidation(formData);
+    if (validate) {
+      setLoading(true);
+      const dateString =
+        date !== null ? date.toLocaleString().split(" ")[0] : "";
+      const params = new URLSearchParams({ ...formData, date: dateString });
+      try {
+        const response = await fetch(
+          `${import.meta.env.PUBLIC_ENV__API}?${params}`,
+          {
+            method: "POST",
+          }
+        );
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
         }
-      );
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        const data = await response.json();
+        if (data.status === "success") {
+          return toast.success(data.message, {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+          });
+        } else if (data.status === "error") {
+          return toast.error(data.message, {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+          });
+        }
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
       }
-      const data = await response.json();
-      console.log(data);
-      //TODO: add alert, add loading, add validation
-    } catch (err) {
-      console.error(err);
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -280,6 +349,19 @@ export default function Register() {
           </clipPath>
         </defs>
       </svg>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover={false}
+        theme="light"
+        transition={Bounce}
+      />
       <div className="relative w-full mt-8">
         <img
           className="absolute left-[clamp(16px,calc(100vw-1152px),128px)] z-10"
