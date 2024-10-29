@@ -72,14 +72,14 @@ const ClipDiv = styled.section`
 `;
 
 export default function Register() {
-  const [value, onChange] = useState<Value>(new Date());
+  // const [value, onChange] = useState<Value>(new Date());
   const [formData, setFormData] = useState<FormDataType>({
     userName: "",
     userNumber: "",
     phone: "",
     email: "",
     invoiceNum: "",
-    date: "",
+    date: new Date().toDateString(),
     randomCode: "",
   });
   const [loading, setLoading] = useState<boolean>(false);
@@ -283,14 +283,12 @@ export default function Register() {
     }
   }, [isOpen]);
 
-  const handleSubmit = async (formData: FormDataType, date: Value) => {
+  const handleSubmit = async (formData: FormDataType) => {
     setOnSubmit(true);
     handleValidation(formData);
     if (validate) {
       setLoading(true);
-      const dateString =
-        date !== null ? date.toLocaleString().split(" ")[0] : "";
-      const params = new URLSearchParams({ ...formData, date: dateString });
+      const params = new URLSearchParams(formData);
       try {
         const response = await fetch(
           `${import.meta.env.PUBLIC_ENV__API}?${params}`,
@@ -409,6 +407,8 @@ export default function Register() {
             required
             value={formData.userNumber}
             autoComplete="off"
+            pattern="[A-Za-z0-9]*"
+            inputMode="text"
             setReference={userNumberRefs.setReference}
             isMounted={userNumberIsMounted}
             setFloating={userNumberRefs.setFloating}
@@ -462,17 +462,22 @@ export default function Register() {
             <label htmlFor="date" className="label">
               消費日期
             </label>
-              <DatePicker
-                id="date"
-                className="input"
-                onChange={onChange}
-                value={value}
-                maxDate={new Date()}
-                calendarIcon={null}
-                clearIcon={null}
-                required
-                format="yyyy/MM/dd"
-              />
+            <input
+              type="date"
+              id="date"
+              className="input"
+              value={formData.date}
+              onChange={handleInputOnchange}
+              required
+            />
+            {/* <DatePicker
+              className="input"
+              maxDate={new Date()}
+              calendarIcon={null}
+              clearIcon={null}
+              required
+              format="yyyy/MM/dd"
+            /> */}
           </div>
           <LabeledInputField
             label="隨機碼"
@@ -492,7 +497,7 @@ export default function Register() {
           <div className="flex justify-center">
             <button
               onClick={() => {
-                handleSubmit(formData, value);
+                handleSubmit(formData);
               }}
               className="w-[153px] sm:w-[344px] sm:h-[80px]"
               disabled={loading}

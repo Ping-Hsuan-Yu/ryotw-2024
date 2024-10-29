@@ -18,13 +18,13 @@
 }
 
 .label {
-  @apply text-primary-600 text-base md:text-[28px] font-medium tracking-[0.09em];
+  @apply text-primary-600 font-medium text-base md:text-[28px] sm:tracking-[0.09em];
 }
 
 .input {
-  @apply bg-primary-300 text-primary-600 text-base md:text-[26px] font-medium tracking-[0.13em] lg:w-[442px] outline-primary-500 px-3 py-1 placeholder:text-primary-400;
+  @apply bg-primary-300 text-primary-600 text-base md:text-[26px] sm:tracking-[0.13em] font-medium lg:w-[442px] outline-primary-500 px-3 py-1 placeholder:text-primary-400;
 }
 
 .label-input-field {
-  @apply flex justify-between items-center gap-7;
+  @apply flex justify-between items-center gap-4 sm:gap-7;
 }

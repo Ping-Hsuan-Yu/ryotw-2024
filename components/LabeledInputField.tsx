@@ -8,6 +8,7 @@ export default function LabeledInputField({
   value,
   autoComplete,
   inputMode,
+  pattern,
   placeholder,
   setReference,
   setFloating,
@@ -31,6 +32,7 @@ export default function LabeledInputField({
     | "decimal"
     | "search"
     | undefined;
+  pattern?: string;
   placeholder?: string | undefined;
   setReference: (node: ReferenceType | null) => void;
   setFloating: (node: HTMLElement | null) => void;
