@@ -4,24 +4,37 @@ const Loader = styled.div`
   color: #9db453;
   display: inline-block;
   position: relative;
-  width: 80px;
-  height: 80px;
+  width: 40px;
+  height: 40px;
+  @media (min-width: 640px) {
+    width: 80px;
+    height: 80px;
+  }
   &,
   & div,
   & div::after {
     box-sizing: border-box;
   }
   & div {
-    transform-origin: 40px 40px;
+    transform-origin: 20px 20px;
+    @media (min-width: 640px) {
+      transform-origin: 40px 40px;
+    }
     animation: lds-spinner 1.2s linear infinite;
     &:after {
       content: " ";
       display: block;
       position: absolute;
-      top: 3.2px;
-      left: 36.8px;
-      width: 6.4px;
-      height: 17.6px;
+      top: 1.6px;
+      left: 18.4px;
+      width: 3.2px;
+      height: 8.8px;
+      @media (min-width: 640px) {
+        top: 3.2px;
+        left: 36.8px;
+        width: 6.4px;
+        height: 17.6px;
+      }
       border-radius: 20%;
       background: currentColor;
     }

@@ -13,8 +13,11 @@ const Main = styled.main`
 `;
 
 const Limit = styled.div`
-  width: calc(100dvw - 15px) ;
-  max-width: 1280px;
+  width: 100dvw;
+  @media (min-width: 640px) {
+    width: calc(100dvw - 15px);
+    max-width: 1280px;
+  }
 `;
 
 export default function Page() {
@@ -22,7 +25,7 @@ export default function Page() {
     <Limit>
       <Navigation />
       <Kv />
-      <Main className="bg-primary-300 lg:pt-24 pt-20">
+      <Main className="bg-primary-300 pt-8 md:pt-20 lg:pt-24">
         <Coupon />
         <Announcement />
         <AnnouncementDetail />

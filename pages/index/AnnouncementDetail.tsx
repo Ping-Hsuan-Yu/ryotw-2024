@@ -21,12 +21,12 @@ export default function AnnouncementDetail() {
       </div>
       <div className="flex justify-center bg-white relative">
         <img src={Airplane} alt="" className="absolute lg:w-[1031px]" />
-        <section className="flex flex-col gap-8 lg:w-[900px] mt-[112px] px-4">
+        <section className="flex flex-col gap-4 sm:gap-8 lg:w-[900px] mt-10 sm:mt-[112px] px-4">
           {detail.map((text) => (
             <div key={text.title} className="font-bold">
-              <h2 className="text-primary-400 text-lg sm:text-[28px] tracking-[0.05em] leading-[51px]">{text.title}</h2>
+              <h2 className="text-primary-400 text-lg sm:text-[28px] tracking-[0.05em] sm:leading-[51px]">{text.title}</h2>
               {text.content.map((content,index) => (
-                <p key={`${content}${index}`} className="text-primary-600 text-base sm:text-[19px] tracking-[0.05em] leading-[31px]">
+                <p key={`${content}${index}`} className="text-primary-600 text-xs sm:text-[19px] tracking-[0.05em] leading-relaxed sm:leading-[31px]">
                   {content}
                 </p>
               ))}

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import DatePicker from "react-date-picker";
 import { styled } from "styled-components";
 import LinkBg from "../../assets/link.webp";
+import LinkBgM from "../../assets/link_m.webp";
 import IlliyoonLogo from "../../assets/logo/illiyoon-logo.svg";
 import MiseensceneLogo from "../../assets/logo/miseenscene-logo.svg";
 import RyoLogo from "../../assets/logo/ryo-logo.svg";
@@ -362,20 +363,20 @@ export default function Register() {
         theme="light"
         transition={Bounce}
       />
-      <div className="relative w-full mt-8">
+      {/* <div className="relative w-full mt-8">
         <img
-          className="absolute left-[clamp(16px,calc(100vw-1152px),128px)] z-10"
+          className="absolute left-[clamp(16px,calc(100vw-1152px),128px)] z-10 w-[17vw]"
           src={Stamp1}
           alt=""
         />
         <img
-          className="absolute right-[clamp(-100px,calc(100vw-1208px),72px)] top-[512px] z-10"
+          className="absolute right-[clamp(-10px,calc(100vw-1208px),72px)] top-[512px] z-10 w-[16vw]"
           src={Stamp2}
           alt=""
         />
-      </div>
-      <ClipDiv id="register" className="bg-white pb-2 mt-40">
-        <div className="flex gap-5 md:gap-[36px] justify-center items-center mt-16 mb-8">
+      </div> */}
+      <ClipDiv id="register" className="bg-white sm:pb-2 sm:mt-40 mt-10">
+        <div className="flex gap-5 md:gap-[36px] justify-center items-center md:mt-16 my-4 sm:my-8">
           <img className="md:w-[81px] w-[40px]" src={RyoLogo} alt="" />
           <img className="md:w-[59px] w-[30px]" src={MiseensceneLogo} alt="" />
           <img className="md:w-[142px] w-[70px] " src={IlliyoonLogo} alt="" />
@@ -387,7 +388,7 @@ export default function Register() {
           </TitleWithDot>
         </div>
 
-        <div className="sm:mx-24 mt-7 mb-14 flex flex-col gap-4 md:gap-14">
+        <div className="mx-4 sm:mx-24 my-4 sm:mb-14 flex flex-col gap-4 md:gap-14">
           <LabeledInputField
             label="真實姓名"
             id="userName"
@@ -461,17 +462,17 @@ export default function Register() {
             <label htmlFor="date" className="label">
               消費日期
             </label>
-            <DatePicker
-              id="date"
-              className="input"
-              onChange={onChange}
-              value={value}
-              maxDate={new Date()}
-              calendarIcon={null}
-              clearIcon={null}
-              required
-              format="yyyy/MM/dd"
-            />
+              <DatePicker
+                id="date"
+                className="input"
+                onChange={onChange}
+                value={value}
+                maxDate={new Date()}
+                calendarIcon={null}
+                clearIcon={null}
+                required
+                format="yyyy/MM/dd"
+              />
           </div>
           <LabeledInputField
             label="隨機碼"
@@ -501,49 +502,57 @@ export default function Register() {
           </div>
         </div>
       </ClipDiv>
-      <p className="text-[9px] md:text-[21px] text-center text-white font-medium tracking-[0.06em] md:leading-10 md:mt-10">
+      <p className="text-center text-white font-medium tracking-[0.06em] text-[9px] mt-5 md:text-[21px] md:leading-10 md:mt-10 ">
         *發票明細需能清楚辨識購買的產品，若為載具登錄者不需填寫隨機碼
         <br />
         領獎時需附上消費明細，所有發票審核及認定由主辦單位保留最終決定權
       </p>
 
       <section id="meta" className="relative my-10 md:my-20">
-        <img
-          className="absolute top-[-128px] right-[-128px]"
+        {/* <img
+          className="absolute top-[-128px] right-[-128px] w-[27vw]"
           src={Stamp3}
           alt=""
-        />
+        /> */}
         <a
           target="_blank"
           href="https://www.facebook.com/RyohairTW"
-          className="absolute w-[6.5%] h-[10%] top-[62.5%] left-[17.5%]"
+          className="absolute w-[9%] h-[10%] top-[61%] left-[10%] sm:w-[6.5%] sm:h-[10%] sm:top-[62.5%] sm:left-[17.5%]"
         />
         <a
           target="_blank"
           href="https://www.instagram.com/ryohairtw"
-          className="absolute w-[6.5%] h-[10%] top-[62.5%] left-[25%]"
+          className="absolute w-[9%] h-[10%] top-[61%] left-[22.5%] sm:w-[6.5%] sm:h-[10%] sm:top-[62.5%] sm:left-[25%]"
         />
         <a
           target="_blank"
           href="https://www.facebook.com/miseensceneTW"
-          className="absolute w-[6.5%] h-[10%] top-[62.5%] left-[41.5%]"
+          className="absolute w-[9%] h-[10%] top-[61%] left-[38.5%] sm:w-[6.5%] sm:h-[10%] sm:top-[62.5%] sm:left-[41.5%]"
         />
         <a
           target="_blank"
           href="https://www.instagram.com/miseenscenetw"
-          className="absolute w-[6.5%] h-[10%] top-[62.5%] left-[49%]"
+          className="absolute w-[9%] h-[10%] top-[61%] left-[51%] sm:w-[6.5%] sm:h-[10%] sm:top-[62.5%] sm:left-[49%]"
         />
         <a
           target="_blank"
           href="https://www.facebook.com/illiyoonTW"
-          className="absolute w-[6.5%] h-[10%] top-[62.5%] left-[65.5%]"
+          className="absolute w-[9%] h-[10%] top-[61%] left-[66.5%] sm:w-[6.5%] sm:h-[10%] sm:top-[62.5%] sm:left-[65.5%]"
         />
         <a
           target="_blank"
           href="https://www.instagram.com/illiyoon_tw"
-          className="absolute w-[6.5%] h-[10%] top-[62.5%] left-[73%]"
+          className="absolute w-[9%] h-[10%] top-[61%] left-[79%] sm:w-[6.5%] sm:h-[10%] sm:top-[62.5%] sm:left-[73%]"
         />
-        <img src={LinkBg} className="w-full xl:w-[1074px]" />
+        <picture>
+          <source
+            media="(min-width: 640px)"
+            srcSet={LinkBg}
+            type="image/webp"
+            className="w-full xl:w-[1074px]"
+          />
+          <img src={LinkBgM} alt="" />
+        </picture>
       </section>
     </GridBg>
   );

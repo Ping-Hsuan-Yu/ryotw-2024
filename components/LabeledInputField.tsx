@@ -59,7 +59,7 @@ export default function LabeledInputField({
         <div
           ref={setFloating}
           style={styles}
-          className="bg-[#ff7f01] text-white p-2 rounded"
+          className="bg-[#ff7f01] text-white rounded text-xs p-1 sm:p-2"
         >
           {validationMessages}
         </div>

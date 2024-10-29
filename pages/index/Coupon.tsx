@@ -28,9 +28,10 @@ const Ticket = styled.section`
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center top;
+  height: calc((100vw - 1.5rem) * 2.07);
   @media (min-width: 768px) {
     background-image: url(${TicketBg});
-    height: 60vw;
+    height: 56.8vw;
     max-height: 727px;
   }
 `;
@@ -42,7 +43,10 @@ const Triangle = styled.div`
   border-style: solid;
   border-width: 10px 17.3px 10px 0;
   border-color: transparent #9db453 transparent transparent;
-  transform: rotate(0deg);
+  transform: rotate(90deg);
+  @media (min-width: 640px) {
+    transform: rotate(0deg);
+  }
 `;
 
 const brandData = [
@@ -128,24 +132,24 @@ export default function Coupon() {
     }
   };
   return (
-    <Ticket id="coupon" className="md:mx-0 mx-6">
-      <div className="relative ">
+    <Ticket id="coupon" className="mx-3 md:mx-0 flex flex-col">
+      {/* <div className="relative ">
         <img
           className="absolute xl:right-[260px] lg:right-[170px] md:right-[140px] right-[-40px] md:top-[-80px] top-[20px] md:w-[155px] w-[86px]"
           src={Stamp}
           alt=""
         />
+      </div> */}
+      <div className="text-[24px] sm:text-[36px] lg:text-[48px] font-bold flex text-white tracking-widest h-[calc((100vw-1.5rem)*0.184)] md:h-[13.61vw]">
+        <p className="m-auto">各通路優惠券</p>
       </div>
-      <div className="text-[24px] md:text-[36px] lg:text-[48px] font-bold text-white text-center tracking-widest pt-[20px] md:pt-[45px] lg:pt-[50px] xl:pt-[60px]">
-        各通路優惠券
-      </div>
-      <div className="flex flex-col md:flex-row">
-        <div className="md:basis-[65%] lg:mt-20 md:mt-16 mt-20">
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-y-10 md:gap-y-16 gap-x-4 mx-4 items-center justify-items-center">
+      <div className="grow flex flex-col md:flex-row">
+        <div className="basis-1/2 md:basis-[65%]">
+          <div className="grid grid-cols-2 ps-8 pe-10 pt-[7vw] gap-x-10 gap-y-[12vw] md:px-10 md:pt-10 md:grid-cols-3 md:gap-y-16 items-center justify-items-center">
             {brandData.map((brand) => (
               <div
                 key={brand.id}
-                className="cursor-pointer md:p-0 p-2"
+                className="cursor-pointer"
                 id={brand.id}
                 onClick={handleLogoOnClick}
               >
@@ -153,18 +157,18 @@ export default function Coupon() {
                   src={brand.logo}
                   alt={brand.canme}
                   width={brand.logoWidth}
-                  className={`lg:max-w-full md:max-w-[140px]`}
+                  className=""
                 />
               </div>
             ))}
           </div>
         </div>
-        <div className="md:basis-[35%] md:mt-12 lg:mt-8 xl:mt-16 flex">
-          <div className="m-auto flex flex-col items-center">
+        <div className="basis-1/2 md:basis-[35%] flex justify-center items-center md:items-start">
+          <div className="flex flex-col items-center">
             {!showCoupon && (
-              <div className="flex items-center">
-                <Triangle className="me-2" />
-                <p className="text-center text-[#ff7f01] text-[21px] lg:text-[34px] font-bold tracking-[0.09em] lg:leading-[41px]">
+              <div className="flex flex-col sm:flex-row items-center">
+                <Triangle className="mb-2 sm:me-2" />
+                <p className="text-center text-[#ff7f01] text-xl lg:text-[34px] font-bold tracking-[0.09em] lg:leading-[41px]">
                   <span className="hidden md:inline-block">點擊左邊各通路</span>
                   <span className="md:hidden">點擊上方各通路</span>
                   <br />
@@ -180,9 +184,11 @@ export default function Coupon() {
                   src={couponInfo.src}
                   width={couponInfo.width}
                   alt=""
-                  className={`lg:w-[300px] md:w-[200px]`}
+                  className="object-contain h-[calc((100vw-1.5rem)*0.9-48px)] md:h-[35vw]"
                 />
-                <p className="block md:hidden mt-3 text-primary-400 font-medium tracking-widest text-lg">*手機長按儲存圖片</p>
+                <p className="block sm:hidden mt-2 text-primary-400 tracking-widest text-xs">
+                  *手機長按儲存圖片
+                </p>
               </>
             )}
           </div>
