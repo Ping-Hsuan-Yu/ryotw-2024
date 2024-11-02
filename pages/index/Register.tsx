@@ -71,7 +71,7 @@ export default function Register() {
     phone: "",
     email: "",
     invoiceNum: "",
-    date: new Date().toDateString(),
+    date: new Date().toISOString().split("T")[0],
     randomCode: "",
   });
   const [loading, setLoading] = useState<boolean>(false);
@@ -491,7 +491,7 @@ export default function Register() {
               onClick={() => {
                 handleSubmit(formData);
               }}
-              className="w-[153px] sm:w-[344px] sm:h-[80px]"
+              className="w-[153px] md:w-[344px] md:h-[80px]"
               disabled={loading}
             >
               {loading ? <Loading /> : <img src={SubmitButton} alt="" />}

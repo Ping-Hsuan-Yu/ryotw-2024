@@ -10,7 +10,7 @@ export default {
   Layout,
 
   // https://vike.dev/head-tags
-  title: "呂｜魅尚萱｜一理潤 登錄發票抽獎活動",
+  title: "呂 魅尚萱 一理潤 登錄發票抽獎活動",
   description: "購買呂、魅尚萱、一理潤產品，消費總額滿$399，即可獲得「韓國首爾雙人來回機票」及各品牌熱銷商品抽獎資格！",
 
   extends: vikeReact,
