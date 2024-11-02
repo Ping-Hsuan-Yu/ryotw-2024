@@ -11,8 +11,6 @@ import Dot from "../../assets/register/green-dot.webp";
 import GreenGrid from "../../assets/register/register-bg.webp";
 import LabeledInputField from "../../components/LabeledInputField";
 import Loading from "../../components/Loading";
-import "../../styles/Calendar.css";
-import "../../styles/DatePicker.css";
 import Stamp1 from "../../assets/register/stamp-1.webp";
 import Stamp2 from "../../assets/register/stamp-2.webp";
 import Stamp3 from "../../assets/register/stamp-3.webp";
