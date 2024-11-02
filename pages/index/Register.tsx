@@ -1,6 +1,5 @@
 import { useFloating, useTransitionStyles } from "@floating-ui/react";
 import { useEffect, useState } from "react";
-import DatePicker from "react-date-picker";
 import { styled } from "styled-components";
 import LinkBg from "../../assets/link.webp";
 import LinkBgM from "../../assets/link_m.webp";
@@ -20,10 +19,6 @@ import Stamp3 from "../../assets/register/stamp-3.webp";
 
 import { ToastContainer, toast, Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-type ValuePiece = Date | null;
-
-type Value = ValuePiece | [ValuePiece, ValuePiece];
 
 type FormDataType = {
   userName: string;
@@ -72,7 +67,6 @@ const ClipDiv = styled.section`
 `;
 
 export default function Register() {
-  // const [value, onChange] = useState<Value>(new Date());
   const [formData, setFormData] = useState<FormDataType>({
     userName: "",
     userNumber: "",

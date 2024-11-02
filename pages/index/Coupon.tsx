@@ -140,10 +140,10 @@ export default function Coupon() {
           alt=""
         />
       </div> */}
-      <div className="text-[24px] sm:text-[36px] lg:text-[48px] font-bold flex text-white tracking-widest h-[calc((100vw-1.5rem)*0.184)] md:h-[13.61vw]">
+      <div className="text-[24px] sm:text-[36px] lg:text-[48px] font-bold flex text-white tracking-widest h-[calc((100vw-1.5rem)*0.184)] md:h-[13.61vw] max-h-[174px]">
         <p className="m-auto">各通路優惠券</p>
       </div>
-      <div className="grow flex flex-col md:flex-row">
+      <div className="flex flex-col md:flex-row">
         <div className="basis-1/2 md:basis-[65%]">
           <div className="grid grid-cols-2 ps-8 pe-10 pt-[7vw] gap-x-10 gap-y-[12vw] md:px-10 md:pt-10 md:grid-cols-3 md:gap-y-16 items-center justify-items-center">
             {brandData.map((brand) => (
@@ -163,7 +163,11 @@ export default function Coupon() {
             ))}
           </div>
         </div>
-        <div className="basis-1/2 md:basis-[35%] flex justify-center items-center md:items-start">
+        <div
+          className={`basis-1/2 md:basis-[35%] flex justify-center items-center ${
+            showCoupon ? "md:items-start" : ""
+          }`}
+        >
           <div className="flex flex-col items-center">
             {!showCoupon && (
               <div className="flex flex-col sm:flex-row items-center">
@@ -184,7 +188,7 @@ export default function Coupon() {
                   src={couponInfo.src}
                   width={couponInfo.width}
                   alt=""
-                  className="object-contain h-[calc((100vw-1.5rem)*0.9-48px)] md:h-[35vw]"
+                  className="object-contain h-[calc((100vw-1.5rem)*0.9-48px)] md:h-[35vw] max-h-[448px]"
                 />
                 <p className="block sm:hidden mt-2 text-primary-400 tracking-widest text-xs">
                   *手機長按儲存圖片
