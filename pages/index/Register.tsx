@@ -1,5 +1,7 @@
 import { useFloating, useTransitionStyles } from "@floating-ui/react";
 import { useEffect, useState } from "react";
+import { Bounce, ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { styled } from "styled-components";
 import LinkBg from "../../assets/link.webp";
 import LinkBgM from "../../assets/link_m.webp";
@@ -11,12 +13,6 @@ import Dot from "../../assets/register/green-dot.webp";
 import GreenGrid from "../../assets/register/register-bg.webp";
 import LabeledInputField from "../../components/LabeledInputField";
 import Loading from "../../components/Loading";
-import Stamp1 from "../../assets/register/stamp-1.webp";
-import Stamp2 from "../../assets/register/stamp-2.webp";
-import Stamp3 from "../../assets/register/stamp-3.webp";
-
-import { ToastContainer, toast, Bounce } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 type FormDataType = {
   userName: string;
@@ -71,7 +67,7 @@ export default function Register() {
     phone: "",
     email: "",
     invoiceNum: "",
-    date: new Date().toISOString().split("T")[0],
+    date: "",
     randomCode: "",
   });
   const [loading, setLoading] = useState<boolean>(false);
@@ -81,7 +77,7 @@ export default function Register() {
     phone: "",
     email: "",
     invoiceNum: "",
-    randomCode: "",
+    date: "",
   });
   const [isOpen, setIsOpen] = useState({
     userName: false,
@@ -89,7 +85,7 @@ export default function Register() {
     phone: false,
     email: false,
     invoiceNum: false,
-    randomCode: false,
+    date: false,
   });
 
   const [onSubmit, setOnSubmit] = useState<boolean>(false);
@@ -158,17 +154,18 @@ export default function Register() {
     useTransitionStyles(invoiceNumContext, { duration: 150 });
 
   const {
-    refs: randomCodeRefs,
-    floatingStyles: randomCodeFloatingStyles,
-    context: randomCodeContext,
+    refs: dateRefs,
+    floatingStyles: dateFloatingStyles,
+    context: dateContext,
   } = useFloating({
     placement: "top-end",
-    open: isOpen.randomCode,
-    onOpenChange: (open) =>
-      setIsOpen((prev) => ({ ...prev, randomCode: open })),
+    open: isOpen.date,
+    onOpenChange: (open) => setIsOpen((prev) => ({ ...prev, date: open })),
   });
-  const { isMounted: randomCodeIsMounted, styles: randomCodeStyles } =
-    useTransitionStyles(randomCodeContext, { duration: 150 });
+  const { isMounted: dateIsMounted, styles: dateStyles } = useTransitionStyles(
+    dateContext,
+    { duration: 150 }
+  );
 
   const handleInputOnchange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
@@ -260,6 +257,15 @@ export default function Register() {
       setIsOpen((prev) => ({ ...prev, invoiceNum: true }));
     } else {
       setIsOpen((prev) => ({ ...prev, invoiceNum: false }));
+    }
+    if (formData.date === "") {
+      setValidationMessages((prev) => ({
+        ...prev,
+        date: "此為必填欄位",
+      }));
+      setIsOpen((prev) => ({ ...prev, date: true }));
+    } else {
+      setIsOpen((prev) => ({ ...prev, date: false }));
     }
   };
 
@@ -353,18 +359,6 @@ export default function Register() {
         theme="light"
         transition={Bounce}
       />
-      {/* <div className="relative w-full mt-8">
-        <img
-          className="absolute left-[clamp(16px,calc(100vw-1152px),128px)] z-10 w-[17vw]"
-          src={Stamp1}
-          alt=""
-        />
-        <img
-          className="absolute right-[clamp(-10px,calc(100vw-1208px),72px)] top-[512px] z-10 w-[16vw]"
-          src={Stamp2}
-          alt=""
-        />
-      </div> */}
       <ClipDiv id="register" className="bg-white sm:pb-2 sm:mt-40 mt-10">
         <div className="flex gap-5 md:gap-[36px] justify-center items-center md:mt-16 my-4 sm:my-8">
           <img className="md:w-[81px] w-[40px]" src={RyoLogo} alt="" />
@@ -407,7 +401,6 @@ export default function Register() {
             styles={{ ...userNumberFloatingStyles, ...userNumberStyles }}
             validationMessages={validationMessages.userNumber}
           />
-
           <LabeledInputField
             label="聯絡電話"
             id="phone"
@@ -449,7 +442,6 @@ export default function Register() {
             styles={{ ...invoiceNumFloatingStyles, ...invoiceNumStyles }}
             validationMessages={validationMessages.invoiceNum}
           />
-
           <div className="label-input-field">
             <label htmlFor="date" className="label">
               消費日期
@@ -461,15 +453,19 @@ export default function Register() {
               value={formData.date}
               onChange={handleInputOnchange}
               required
+              min="2024-11-25"
+              max="2025-01-14"
+              ref={dateRefs.setReference}
             />
-            {/* <DatePicker
-              className="input"
-              maxDate={new Date()}
-              calendarIcon={null}
-              clearIcon={null}
-              required
-              format="yyyy/MM/dd"
-            /> */}
+            {dateIsMounted && (
+              <div
+                ref={dateRefs.setFloating}
+                style={{ ...dateFloatingStyles, ...dateStyles }}
+                className="bg-[#ff7f01] text-white rounded text-xs md:text-base p-1 sm:p-2"
+              >
+                {validationMessages.date}
+              </div>
+            )}
           </div>
           <LabeledInputField
             label="隨機碼"
@@ -479,11 +475,6 @@ export default function Register() {
             value={formData.randomCode}
             inputMode="numeric"
             placeholder="0000"
-            setReference={randomCodeRefs.setReference}
-            isMounted={randomCodeIsMounted}
-            setFloating={randomCodeRefs.setFloating}
-            styles={{ ...randomCodeFloatingStyles, ...randomCodeStyles }}
-            validationMessages={validationMessages.randomCode}
           />
 
           <div className="flex justify-center">
@@ -506,11 +497,6 @@ export default function Register() {
       </p>
 
       <section id="meta" className="relative my-10 md:my-20">
-        {/* <img
-          className="absolute top-[-128px] right-[-128px] w-[27vw]"
-          src={Stamp3}
-          alt=""
-        /> */}
         <a
           target="_blank"
           href="https://www.facebook.com/RyohairTW"

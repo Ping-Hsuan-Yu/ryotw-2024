@@ -34,11 +34,11 @@ export default function LabeledInputField({
     | undefined;
   pattern?: string;
   placeholder?: string | undefined;
-  setReference: (node: ReferenceType | null) => void;
-  setFloating: (node: HTMLElement | null) => void;
-  isMounted: boolean;
-  styles: React.CSSProperties;
-  validationMessages: string;
+  setReference?: (node: ReferenceType | null) => void;
+  setFloating?: (node: HTMLElement | null) => void;
+  isMounted?: boolean;
+  styles?: React.CSSProperties;
+  validationMessages?: string;
 }) {
   return (
     <div className="label-input-field">
@@ -61,7 +61,7 @@ export default function LabeledInputField({
         <div
           ref={setFloating}
           style={styles}
-          className="bg-[#ff7f01] text-white rounded text-xs p-1 sm:p-2"
+          className="bg-[#ff7f01] text-white rounded text-xs md:text-base p-1 sm:p-2"
         >
           {validationMessages}
         </div>
