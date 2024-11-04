@@ -208,6 +208,22 @@ export default function Register() {
     }
   };
 
+  useEffect(() => {
+    console.log(formData.date);
+  }, [formData.date]);
+
+  const isDateInRange = (
+    dateStr: string,
+    startDateStr: string,
+    endDateStr: string
+  ) => {
+    const date = new Date(dateStr);
+    const startDate = new Date(startDateStr);
+    const endDate = new Date(endDateStr);
+
+    return date >= startDate && date <= endDate;
+  };
+
   const handleValidation = (formData: FormDataType) => {
     const idRegex = /^[A-Z][0-9]{9}$/; // 第一碼為英文字母，剩下九碼為數字
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // email 格式
@@ -267,6 +283,13 @@ export default function Register() {
     } else {
       setIsOpen((prev) => ({ ...prev, date: false }));
     }
+    if (!isDateInRange(formData.date, "2024-11-25", "2025-01-14")) {
+      setValidationMessages((prev) => ({ ...prev, date: "僅允許填寫活動時間內日期" }));
+      setIsOpen((prev) => ({ ...prev, date: true }));
+    } else {
+      setIsOpen((prev) => ({ ...prev, date: false }));
+    }
+    
   };
 
   useEffect(() => {
