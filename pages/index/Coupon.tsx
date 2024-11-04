@@ -44,7 +44,7 @@ const Triangle = styled.div`
   border-width: 10px 17.3px 10px 0;
   border-color: transparent #9db453 transparent transparent;
   transform: rotate(90deg);
-  @media (min-width: 640px) {
+  @media (min-width: 768px) {
     transform: rotate(0deg);
   }
 `;
@@ -133,17 +133,10 @@ export default function Coupon() {
   };
   return (
     <Ticket id="coupon" className="mx-3 md:mx-0 flex flex-col">
-      {/* <div className="relative ">
-        <img
-          className="absolute xl:right-[260px] lg:right-[170px] md:right-[140px] right-[-40px] md:top-[-80px] top-[20px] md:w-[155px] w-[86px]"
-          src={Stamp}
-          alt=""
-        />
-      </div> */}
       <div className="text-[24px] sm:text-[36px] lg:text-[48px] font-bold flex text-white tracking-widest h-[calc((100vw-1.5rem)*0.184)] md:h-[13.61vw] max-h-[174px]">
         <p className="m-auto">各通路優惠券</p>
       </div>
-      <div className="flex flex-col md:flex-row">
+      <div className="flex flex-col md:flex-row grow">
         <div className="basis-1/2 md:basis-[65%]">
           <div className="grid grid-cols-2 ps-8 pe-10 pt-[7vw] gap-x-10 gap-y-[12vw] md:px-10 md:pt-10 md:grid-cols-3 md:gap-y-16 items-center justify-items-center">
             {brandData.map((brand) => (
@@ -164,14 +157,14 @@ export default function Coupon() {
           </div>
         </div>
         <div
-          className={`basis-1/2 md:basis-[35%] flex justify-center items-center ${
-            showCoupon ? "md:items-start" : ""
+          className={`basis-1/2 md:basis-[35%] flex justify-center items-center${
+            showCoupon ? " md:items-start" : ""
           }`}
         >
           <div className="flex flex-col items-center">
             {!showCoupon && (
-              <div className="flex flex-col sm:flex-row items-center">
-                <Triangle className="mb-2 sm:me-2" />
+              <div className="flex flex-col md:flex-row items-center">
+                <Triangle className="mb-2 md:me-2" />
                 <p className="text-center text-[#ff7f01] text-xl lg:text-[34px] font-bold tracking-[0.09em] lg:leading-[41px]">
                   <span className="hidden md:inline-block">點擊左邊各通路</span>
                   <span className="md:hidden">點擊上方各通路</span>
