@@ -284,12 +284,14 @@ export default function Register() {
       setIsOpen((prev) => ({ ...prev, date: false }));
     }
     if (!isDateInRange(formData.date, "2024-11-25", "2025-01-14")) {
-      setValidationMessages((prev) => ({ ...prev, date: "僅允許填寫活動時間內日期" }));
+      setValidationMessages((prev) => ({
+        ...prev,
+        date: "僅允許填寫活動時間內日期",
+      }));
       setIsOpen((prev) => ({ ...prev, date: true }));
     } else {
       setIsOpen((prev) => ({ ...prev, date: false }));
     }
-    
   };
 
   useEffect(() => {
@@ -505,10 +507,15 @@ export default function Register() {
               onClick={() => {
                 handleSubmit(formData);
               }}
-              className="w-[153px] md:w-[344px] md:h-[80px]"
-              disabled={loading}
+              // className="w-[153px] md:w-[344px] md:h-[80px]"
+              className="px-8 py-4 bg-[#ff7f01] rounded text-white"
+              // disabled={loading}
+              disabled
             >
-              {loading ? <Loading /> : <img src={SubmitButton} alt="" />}
+              {
+                //loading ? <Loading /> : <img src={SubmitButton} alt="" />
+              }
+              活動已結束
             </button>
           </div>
         </div>

@@ -6,7 +6,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist/client"
   },
-  "homepage": "https://ryotw-2024.com/",
+  "homepage": "https://ping-hsuan-yu.github.io/ryotw-2024/",
   "dependencies": {
     "@floating-ui/react": "^0.26.25",
     "@vitejs/plugin-react": "^4.3.2",

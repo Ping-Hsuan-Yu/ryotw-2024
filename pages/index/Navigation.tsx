@@ -166,7 +166,7 @@ const Li = ({
       onClick={(e) => {
         handleNavClick(e, href);
       }}
-      href={`#${href}`}
+      href={`/ryotw-2024/#${href}`}
     >
       {text}
     </a>
